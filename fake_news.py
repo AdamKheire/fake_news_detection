@@ -4,11 +4,12 @@ import pickle
 import streamlit as st
 
 # Load the logistic regression model
-pickle_in_model = open('model1.pkl', 'rb')
+
+pickle_in_model = pickle.load(open('model1.pkl', 'rb'))
 logistic_regression_model = pickle.load(pickle_in_model)
 
 # Load the TF-IDF vectorizer
-pickle_in_vectorizer = open('vectorizer.pkl', 'rb')
+pickle_in_vectorizer = pickle.load(open('vectorizer.pkl', 'rb'))
 tfidf_vectorizer = pickle.load(pickle_in_vectorizer)
 
 # This is the main function where we define our app
