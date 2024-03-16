@@ -1,17 +1,14 @@
-
 # Importing required libraries
 import pickle
 import streamlit as st
-from sklearn.linear_model import LogisticRegression
 
 # Load the logistic regression model
-
-pickle_in_model = pickle.load(open('model1.pkl', 'rb'))
-logistic_regression_model = pickle.load(pickle_in_model)
+with open('model1.pkl', 'rb') as file:
+    logistic_regression_model = pickle.load(file)
 
 # Load the TF-IDF vectorizer
-pickle_in_vectorizer = pickle.load(open('vectorizer.pkl', 'rb'))
-tfidf_vectorizer = pickle.load(pickle_in_vectorizer)
+with open('vectorizer.pkl', 'rb') as file:
+    tfidf_vectorizer = pickle.load(file)
 
 # This is the main function where we define our app
 def main():
@@ -34,6 +31,8 @@ def main():
 
 # Function to make the prediction using the input data
 def prediction(news_text):
+    if not news_text.strip():
+        return "Please enter some text."
 
     # Transform the input text into numerical features using the TF-IDF vectorizer
     news_text_tfidf = tfidf_vectorizer.transform([news_text])
