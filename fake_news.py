@@ -2,6 +2,7 @@
 # Importing required libraries
 import pickle
 import streamlit as st
+from sklearn.linear_model import LogisticRegression
 
 # Load the logistic regression model
 
